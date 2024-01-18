@@ -4,42 +4,35 @@
     {
         static void Main(string[] args)
         {
-            // Constructor = A special method in a class used to create an object (instance of the class)
-            // Use the same name as the class name
-            // They can be used to assign arguments to fields when creating objects
+            // Static = a modifier to declare a 'static member', which BELONGS to the class itself rather than to any spcecific object within that class (e.g. a variable, or a method)
+            // remember that when referencing - use the class name, not the unique individual constructors
 
-            Car Car1 = new Car("Ford", "Focus", 2013, "Black");
-            Car Car2 = new Car("Chevy", "Corvette", 2023, "Red");
+            // Static can also be used for a class - meaning that you can't create different objects of that class
 
-            Car1.showDetails();
+            Car Car1 = new Car("Focus");
+            Car Car2 = new Car("Corvette");
 
-            Console.WriteLine();
+            Console.WriteLine(Car.numberOfCars);
 
-            Car2.showDetails();
+            Car.startRace();
         }
 
         class Car
         {
-            public String manufacturer;
-            public String model;
-            public int year;
-            public String colour;
+            String model;
+            public static int numberOfCars;
 
-            public Car(String manufacturer, String model, int year, String colour)
+            public Car(String model)
             {
-                this.manufacturer = manufacturer;
                 this.model = model;
-                this.year = year;
-                this.colour = colour;
+                numberOfCars++;
             }
 
-            public void showDetails()
+            public static void startRace()
             {
-                Console.WriteLine("Manufacturer: " + manufacturer);
-                Console.WriteLine("Model: " + model);
-                Console.WriteLine("Year: " + year);
-                Console.WriteLine("Colour: " + colour);
+                Console.WriteLine("Start race!");
             }
+
         }
     }
 }
