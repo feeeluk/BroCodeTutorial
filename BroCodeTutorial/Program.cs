@@ -1,45 +1,59 @@
 ﻿namespace BroCodeTutorial
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            // Lesson 37 - abstract keyword
+            // Lesson 38 - array of objects
 
-            // Abstract class = modifier tjat indicates missing components or incomplete implementation
-            // For example in the situation below, it is correct to create objects of the type Car or Bicycle or Boat, but Vehicle is not the whole picture..
-            // To prevent a Vehicle object from being created we can use the 'abstract' keyword.
 
-            Car car = new Car();
-            Bicycle bicycle = new Bicycle();
-            Boat boat = new Boat();
-          
-        abstract class Vehicle
-        {
-            public int speed = 0;
+            Car[] garage = new Car[3];
 
-            public void details()
+            Car car1 = new Car("Focus");
+            Car car2 = new Car("Civic");
+            Car car3 = new Car("Clio");
+
+            garage[0] = car1;
+            garage[1] = car2;
+            garage[2] = car3;
+            
+            // write them out manually
+            Console.WriteLine(garage[0].model);
+            Console.WriteLine(garage[1].model);
+            Console.WriteLine(garage[2].model);
+
+            Console.WriteLine("#########");
+            Console.WriteLine();
+
+            // use a foreach loop
+            foreach (Car car in garage)
             {
-                Console.WriteLine("The vehicle details are:");
+                Console.WriteLine(car.model);
             }
+
+            Console.WriteLine("#########");
+            Console.WriteLine();
+
+            // load the objects into the array declaration = cleaner and simpler
+            Car[] garage2 = {new Car("Focus"), new Car("Civic"), new Car("Clio") };
+            
+            // use a foreach loop
+            foreach (Car car in garage2)
+            {
+                Console.WriteLine(car.model);
+            }
+            
+
         }
 
-        class Car : Vehicle
+        class Car
         {
-            public int wheels = 4;
-            int maxSpeed = 250;
-        }
+            public String model;
 
-        class Bicycle : Vehicle
-        {
-            public int wheels = 2;
-            int maxSpeed = 200;
-        }
-
-        class Boat : Vehicle
-        {
-            public int wheels = 0;
-            int maxSpeed = 70;
+            public Car(String model)
+            {
+                this.model = model;
+            }
         }
     }
 }
