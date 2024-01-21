@@ -4,29 +4,17 @@
     {
         static void Main(string[] args)
         {
-            // Lesson 36 - inheritance
+            // Lesson 37 - abstract keyword
 
-            // Inheritance =    1 or more child classes recieving fields, methods, etc. from a common parent
+            // Abstract class = modifier tjat indicates missing components or incomplete implementation
+            // For example in the situation below, it is correct to create objects of the type Car or Bicycle or Boat, but Vehicle is not the whole picture..
+            // To prevent a Vehicle object from being created we can use the 'abstract' keyword.
 
             Car car = new Car();
             Bicycle bicycle = new Bicycle();
             Boat boat = new Boat();
-
-            Console.WriteLine(car.speed);
-            Console.WriteLine(car.wheels);
-            car.details();
-
-            Console.WriteLine(bicycle.speed);
-            Console.WriteLine(bicycle.wheels);
-            bicycle.details();
-
-            Console.WriteLine(boat.speed);
-            Console.WriteLine(boat.wheels);
-            boat.details();
-
-        }
-
-        class Vehicle
+          
+        abstract class Vehicle
         {
             public int speed = 0;
 
@@ -39,16 +27,20 @@
         class Car : Vehicle
         {
             public int wheels = 4;
+            int maxSpeed = 250;
         }
 
         class Bicycle : Vehicle
         {
             public int wheels = 2;
+            int maxSpeed = 200;
         }
 
         class Boat : Vehicle
         {
             public int wheels = 0;
+            int maxSpeed = 70;
         }
     }
 }
+
