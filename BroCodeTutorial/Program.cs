@@ -4,35 +4,56 @@
     {
         static void Main(string[] args)
         {
-            // Static = a modifier to declare a 'static member', which BELONGS to the class itself rather than to any spcecific object within that class (e.g. a variable, or a method)
-            // remember that when referencing - use the class name, not the unique individual constructors
+            // Lesson 35 - overloaded constructors
 
-            // Static can also be used for a class - meaning that you can't create different objects of that class
+            // Overloaded constructors =    a technique to create multiple constructors with a different set of parameters.
+            //                              name + parameters = signature
 
-            Car Car1 = new Car("Focus");
-            Car Car2 = new Car("Corvette");
+            //                              exactly the same principal as overloaded methods
 
-            Console.WriteLine(Car.numberOfCars);
+            Pizza pizzaFour = new Pizza("regular", "red sauce", "mozzarella", "meat feast");
+            Pizza pizzaThree = new Pizza("regular", "red sauce", "mozzarella");
+            Pizza pizzaTwo = new Pizza("regular", "red sauce");
+            Pizza pizzaOne = new Pizza("regular");
 
-            Car.startRace();
+
+            Console.ReadKey();
         }
 
-        class Car
+        class Pizza
         {
-            String model;
-            public static int numberOfCars;
+            String bread;
+            String sauce;
+            String cheese;
+            String topping;
 
-            public Car(String model)
+            public Pizza(String bread)
             {
-                this.model = model;
-                numberOfCars++;
+                this.bread = bread;
             }
 
-            public static void startRace()
+            public Pizza(String bread, String sauce)
             {
-                Console.WriteLine("Start race!");
+                this.bread = bread;
+                this.sauce = sauce;
+            }
+
+            public Pizza(String bread, String sauce, String cheese)
+            {
+                this.bread = bread;
+                this.sauce = sauce;
+                this.cheese = cheese;
+            }
+
+            public Pizza(String bread, String sauce, String cheese, String topping)
+            {
+                this.bread = bread;
+                this.sauce = sauce;
+                this.cheese = cheese;
+                this.topping = topping;
             }
 
         }
+
     }
 }
