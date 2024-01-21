@@ -4,56 +4,51 @@
     {
         static void Main(string[] args)
         {
-            // Lesson 35 - overloaded constructors
+            // Lesson 36 - inheritance
 
-            // Overloaded constructors =    a technique to create multiple constructors with a different set of parameters.
-            //                              name + parameters = signature
+            // Inheritance =    1 or more child classes recieving fields, methods, etc. from a common parent
 
-            //                              exactly the same principal as overloaded methods
+            Car car = new Car();
+            Bicycle bicycle = new Bicycle();
+            Boat boat = new Boat();
 
-            Pizza pizzaFour = new Pizza("regular", "red sauce", "mozzarella", "meat feast");
-            Pizza pizzaThree = new Pizza("regular", "red sauce", "mozzarella");
-            Pizza pizzaTwo = new Pizza("regular", "red sauce");
-            Pizza pizzaOne = new Pizza("regular");
+            Console.WriteLine(car.speed);
+            Console.WriteLine(car.wheels);
+            car.details();
 
+            Console.WriteLine(bicycle.speed);
+            Console.WriteLine(bicycle.wheels);
+            bicycle.details();
 
-            Console.ReadKey();
+            Console.WriteLine(boat.speed);
+            Console.WriteLine(boat.wheels);
+            boat.details();
+
         }
 
-        class Pizza
+        class Vehicle
         {
-            String bread;
-            String sauce;
-            String cheese;
-            String topping;
+            public int speed = 0;
 
-            public Pizza(String bread)
+            public void details()
             {
-                this.bread = bread;
+                Console.WriteLine("The vehicle details are:");
             }
-
-            public Pizza(String bread, String sauce)
-            {
-                this.bread = bread;
-                this.sauce = sauce;
-            }
-
-            public Pizza(String bread, String sauce, String cheese)
-            {
-                this.bread = bread;
-                this.sauce = sauce;
-                this.cheese = cheese;
-            }
-
-            public Pizza(String bread, String sauce, String cheese, String topping)
-            {
-                this.bread = bread;
-                this.sauce = sauce;
-                this.cheese = cheese;
-                this.topping = topping;
-            }
-
         }
 
+        class Car : Vehicle
+        {
+            public int wheels = 4;
+        }
+
+        class Bicycle : Vehicle
+        {
+            public int wheels = 2;
+        }
+
+        class Boat : Vehicle
+        {
+            public int wheels = 0;
+        }
     }
 }
