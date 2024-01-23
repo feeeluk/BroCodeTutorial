@@ -6,40 +6,41 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 39 - Objects as arguments
+            // Lesson 40 - method overriding = provides a new version of a method inherited from a parent class
 
-            Car car1 = new Car("Focus", "Black");
+            // inherited method must be: abstract || virtual || already overriden
+            // use keyword override
+            // used with ToString(), polymorphism
 
-            // Console.WriteLine(car1.colour + " " + car1.model);
-            // Console.WriteLine("###########");
-            // ChangeColour(car1,"White");
-            // Console.WriteLine(car1.colour + " " +car1.model);
+            Dog dog = new Dog();
+            Cat cat = new Cat();
 
-            Car car2 = Copy(car1);
-            Console.WriteLine(car2.colour + " " +car2.model);
-        }
+            dog.Speak();
+            cat.Speak();
 
-        public static void ChangeColour(Car car, String colour)
-        {
-            car.colour = colour;
-        }
-
-        public static Car Copy(Car carCopy)
-        {
-            return new Car(carCopy.model, carCopy.colour);
         }
     }
 
-    class Car
+    class Animal
     {
-        public String model;
-        public String colour;
-
-        public Car(String model, string colour)
+        public virtual void Speak()
         {
-            this.model = model;
-            this.colour = colour;
+            Console.WriteLine("the animal goes 'burrr'");
         }
     }
+
+    class Dog : Animal
+    {
+        public override void  Speak()
+        {
+            Console.WriteLine("the dog goes 'woof'");
+        }
+    }
+
+    class Cat : Animal
+    {
+
+    }
+
 }
 
