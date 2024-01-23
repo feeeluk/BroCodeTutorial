@@ -1,59 +1,44 @@
-﻿namespace BroCodeTutorial
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace BroCodeTutorial
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // Lesson 38 - array of objects
+            // Lesson 39 - Objects as arguments
 
+            Car car1 = new Car("Focus", "Black");
 
-            Car[] garage = new Car[3];
+            // Console.WriteLine(car1.colour + " " + car1.model);
+            // Console.WriteLine("###########");
+            // ChangeColour(car1,"White");
+            // Console.WriteLine(car1.colour + " " +car1.model);
 
-            Car car1 = new Car("Focus");
-            Car car2 = new Car("Civic");
-            Car car3 = new Car("Clio");
-
-            garage[0] = car1;
-            garage[1] = car2;
-            garage[2] = car3;
-            
-            // write them out manually
-            Console.WriteLine(garage[0].model);
-            Console.WriteLine(garage[1].model);
-            Console.WriteLine(garage[2].model);
-
-            Console.WriteLine("#########");
-            Console.WriteLine();
-
-            // use a foreach loop
-            foreach (Car car in garage)
-            {
-                Console.WriteLine(car.model);
-            }
-
-            Console.WriteLine("#########");
-            Console.WriteLine();
-
-            // load the objects into the array declaration = cleaner and simpler
-            Car[] garage2 = {new Car("Focus"), new Car("Civic"), new Car("Clio") };
-            
-            // use a foreach loop
-            foreach (Car car in garage2)
-            {
-                Console.WriteLine(car.model);
-            }
-            
-
+            Car car2 = Copy(car1);
+            Console.WriteLine(car2.colour + " " +car2.model);
         }
 
-        class Car
+        public static void ChangeColour(Car car, String colour)
         {
-            public String model;
+            car.colour = colour;
+        }
 
-            public Car(String model)
-            {
-                this.model = model;
-            }
+        public static Car Copy(Car carCopy)
+        {
+            return new Car(carCopy.model, carCopy.colour);
+        }
+    }
+
+    class Car
+    {
+        public String model;
+        public String colour;
+
+        public Car(String model, string colour)
+        {
+            this.model = model;
+            this.colour = colour;
         }
     }
 }
