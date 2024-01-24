@@ -6,54 +6,60 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 42 - Polymorphism = A Greek word that means 'to have many forms'
-            // Objects can be identified by more than one type
-            // E.G. A dog is also: canine, animal, organism, mammal
+            // Lesson 43 - Interfaces = defines a 'contract' that all the classes inheriting from should follow
+            // An interace declares 'what a class should have
+            // An inheriting class defines 'how it should do it'
 
-            // Create instances (objects) of classes
-            Car car = new Car();
-            Bicycle bicycle = new Bicycle();
-            Boat boat = new Boat();
+            // The benefit = security + multiple inheritance + 'plug-and-play' code
 
-            // Load objects into array
-            // Use polymorphism to load all 3 objects into an array as all three different types of object have the class Vehicle in common
-            Vehicle[] vehicles = { car, bicycle, boat };
+            Rabbit rabbit1 = new Rabbit();
+            Hawk hawk1 = new Hawk();
+            Fish fish1 = new Fish();
 
-            foreach(Vehicle vehicle in vehicles)
-            {
-                vehicle.Go();
-            }
+            rabbit1.Flee();
+            hawk1.Hunt();
+            fish1.Flee();
+            fish1.Hunt();
+
         }
     }
 
-    class Vehicle
+    interface IPrey
     {
-        public virtual void Go()
-        {
-        }
+        void Flee();
     }
 
-    class Car : Vehicle
+    interface IPredator
     {
-        public override void Go()
-        {
-            Console.WriteLine("Car is moving!");
-        }
+        void Hunt();
     }
     
-    class Bicycle : Vehicle
+    class Rabbit : IPrey
     {
-        public override void Go()
+        public void Flee()
         {
-            Console.WriteLine("Bicycle is moving!");
+            Console.WriteLine("The rabbit runs away");
         }
     }
 
-    class Boat : Vehicle
+    class Hawk : IPredator
     {
-        public override void Go()
+        public void Hunt()
         {
-            Console.WriteLine("Boat is moving!");
+            Console.WriteLine("The hawk hunts");
+        }
+    }
+
+    class Fish : IPrey, IPredator
+    {
+        public void Flee()
+        {
+            Console.WriteLine("The fish swims away");
+        }
+
+        public void Hunt()
+        {
+            Console.WriteLine("The fish hunts for other fish");
         }
     }
 }
