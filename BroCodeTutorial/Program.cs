@@ -7,52 +7,44 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 44
-
-            // lists = A data structure that represent a list of objects that can be accessed by index.
-            // Similar to array, but can dynamically increase / decrease in size.
-            // using System.Collection.Generic;
-
-            // create an array to remind myself
-            // String[] food = new String[3];
+            // Lesson 45 - list of objects
 
             // Create a list
-            List<String> food = new List<String>();
+            List<Player> players = new List<Player>();
 
-            food.Add("Pizza");
-            food.Add("Sandwich");
-            food.Add("Pasta");
-            food.Add("Hotdog");
+            /*
+            Player player1 = new Player("Phil");
+            Player player2 = new Player("Loz");
+            Player player3 = new Player("Nick");
 
-            
-            String[] foodArray = food.ToArray();
-            Console.WriteLine(food[0]);
-            food.Remove("Pasta");
-            food.Insert(1, "sushi");
-            Console.WriteLine(food.Count);
-            Console.WriteLine(food.IndexOf("Sandwich"));
+            players.Add(player1);
+            players.Add(player2);
+            players.Add(player3);
+            */
 
-            Console.WriteLine();
-            Console.WriteLine("##################");
-            Console.WriteLine("ARRAY");
-            Console.WriteLine("##################");
-            Console.WriteLine();
+            players.Add(new Player("Phil"));
+            players.Add(new Player("Loz"));
+            players.Add(new Player("Nick"));
 
-            foreach (String item in foodArray)
+            foreach (Player player in players)
             {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine();
-            Console.WriteLine("##################");
-            Console.WriteLine("LIST");
-            Console.WriteLine("##################");
-            Console.WriteLine();
-
-            foreach (String item in food)
-            {
-                Console.WriteLine(item);
+                Console.WriteLine(player);
             }
         }
     }
+
+    class Player
+    {
+        public String username;
+        public Player(String username)
+        {
+            this.username = username;
+        }
+
+        public override string ToString()
+        {
+            return username;
+        }
+    }
+
 }
