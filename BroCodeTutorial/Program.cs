@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 namespace BroCodeTutorial
 {
@@ -6,61 +7,52 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 43 - Interfaces = defines a 'contract' that all the classes inheriting from should follow
-            // An interace declares 'what a class should have
-            // An inheriting class defines 'how it should do it'
+            // Lesson 44
 
-            // The benefit = security + multiple inheritance + 'plug-and-play' code
+            // lists = A data structure that represent a list of objects that can be accessed by index.
+            // Similar to array, but can dynamically increase / decrease in size.
+            // using System.Collection.Generic;
 
-            Rabbit rabbit1 = new Rabbit();
-            Hawk hawk1 = new Hawk();
-            Fish fish1 = new Fish();
+            // create an array to remind myself
+            // String[] food = new String[3];
 
-            rabbit1.Flee();
-            hawk1.Hunt();
-            fish1.Flee();
-            fish1.Hunt();
+            // Create a list
+            List<String> food = new List<String>();
 
-        }
-    }
+            food.Add("Pizza");
+            food.Add("Sandwich");
+            food.Add("Pasta");
+            food.Add("Hotdog");
 
-    interface IPrey
-    {
-        void Flee();
-    }
+            
+            String[] foodArray = food.ToArray();
+            Console.WriteLine(food[0]);
+            food.Remove("Pasta");
+            food.Insert(1, "sushi");
+            Console.WriteLine(food.Count);
+            Console.WriteLine(food.IndexOf("Sandwich"));
 
-    interface IPredator
-    {
-        void Hunt();
-    }
-    
-    class Rabbit : IPrey
-    {
-        public void Flee()
-        {
-            Console.WriteLine("The rabbit runs away");
-        }
-    }
+            Console.WriteLine();
+            Console.WriteLine("##################");
+            Console.WriteLine("ARRAY");
+            Console.WriteLine("##################");
+            Console.WriteLine();
 
-    class Hawk : IPredator
-    {
-        public void Hunt()
-        {
-            Console.WriteLine("The hawk hunts");
-        }
-    }
+            foreach (String item in foodArray)
+            {
+                Console.WriteLine(item);
+            }
 
-    class Fish : IPrey, IPredator
-    {
-        public void Flee()
-        {
-            Console.WriteLine("The fish swims away");
-        }
+            Console.WriteLine();
+            Console.WriteLine("##################");
+            Console.WriteLine("LIST");
+            Console.WriteLine("##################");
+            Console.WriteLine();
 
-        public void Hunt()
-        {
-            Console.WriteLine("The fish hunts for other fish");
+            foreach (String item in food)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
-
