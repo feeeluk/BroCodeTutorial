@@ -6,41 +6,44 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 40 - method overriding = provides a new version of a method inherited from a parent class
+            // Lesson 41 - ToString method = converts an object (an initition of a class) to its string representation so that it's suitable for dispaly
 
-            // inherited method must be: abstract || virtual || already overriden
-            // use keyword override
-            // used with ToString(), polymorphism
+            Car car = new Car("Ford", "Focus", 2013, "Black");
 
-            Dog dog = new Dog();
-            Cat cat = new Cat();
+            Console.WriteLine(car.ToString());
 
-            dog.Speak();
-            cat.Speak();
+            // Alternatively just call the class as it invokes the ToString() method automatically
+            Console.WriteLine("###############");
+            Console.WriteLine(car);
+
+
 
         }
     }
 
-    class Animal
+    class Car
     {
-        public virtual void Speak()
+        String make;
+        String model;
+        int year;
+        String colour;
+
+        public Car(String make, String model, int year, String colour)
+        { 
+            this.make = make;
+            this.model = model;
+            this.year = year;
+            this.colour = colour;
+        }
+        public override string ToString()
         {
-            Console.WriteLine("the animal goes 'burrr'");
+            String message = "This is a " + make + " " + model;
+            return message;
+
+            // alternatively we can return this directly
+            // return "This is a " + make + " " + model;
         }
-    }
-
-    class Dog : Animal
-    {
-        public override void  Speak()
-        {
-            Console.WriteLine("the dog goes 'woof'");
-        }
-    }
-
-    class Cat : Animal
-    {
 
     }
-
 }
 
