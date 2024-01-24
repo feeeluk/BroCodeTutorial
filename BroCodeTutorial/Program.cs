@@ -6,44 +6,55 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 41 - ToString method = converts an object (an initition of a class) to its string representation so that it's suitable for dispaly
+            // Lesson 42 - Polymorphism = A Greek word that means 'to have many forms'
+            // Objects can be identified by more than one type
+            // E.G. A dog is also: canine, animal, organism, mammal
 
-            Car car = new Car("Ford", "Focus", 2013, "Black");
+            // Create instances (objects) of classes
+            Car car = new Car();
+            Bicycle bicycle = new Bicycle();
+            Boat boat = new Boat();
 
-            Console.WriteLine(car.ToString());
+            // Load objects into array
+            // Use polymorphism to load all 3 objects into an array as all three different types of object have the class Vehicle in common
+            Vehicle[] vehicles = { car, bicycle, boat };
 
-            // Alternatively just call the class as it invokes the ToString() method automatically
-            Console.WriteLine("###############");
-            Console.WriteLine(car);
-
-
-
+            foreach(Vehicle vehicle in vehicles)
+            {
+                vehicle.Go();
+            }
         }
     }
 
-    class Car
+    class Vehicle
     {
-        String make;
-        String model;
-        int year;
-        String colour;
-
-        public Car(String make, String model, int year, String colour)
-        { 
-            this.make = make;
-            this.model = model;
-            this.year = year;
-            this.colour = colour;
-        }
-        public override string ToString()
+        public virtual void Go()
         {
-            String message = "This is a " + make + " " + model;
-            return message;
-
-            // alternatively we can return this directly
-            // return "This is a " + make + " " + model;
         }
+    }
 
+    class Car : Vehicle
+    {
+        public override void Go()
+        {
+            Console.WriteLine("Car is moving!");
+        }
+    }
+    
+    class Bicycle : Vehicle
+    {
+        public override void Go()
+        {
+            Console.WriteLine("Bicycle is moving!");
+        }
+    }
+
+    class Boat : Vehicle
+    {
+        public override void Go()
+        {
+            Console.WriteLine("Boat is moving!");
+        }
     }
 }
 
