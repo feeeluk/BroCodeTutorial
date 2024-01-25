@@ -7,44 +7,46 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 45 - list of objects
+            // Lesson 46 - getters and setters = add security to fields by encapsulation
+            // They are accessorts found within properties
+            // Properties = combine aspects of both fields and methods (share name with a field (just as constructor does with a class))
+            // Get accessor = used to return the propertyu value
+            // Set accessor = used to assign a new value
+            // Value keyword = defines the value being assigned by the set (parameter)
 
-            // Create a list
-            List<Player> players = new List<Player>();
+            Car car = new Car(400);
 
-            /*
-            Player player1 = new Player("Phil");
-            Player player2 = new Player("Loz");
-            Player player3 = new Player("Nick");
+            car.Speed = 1000000000;
 
-            players.Add(player1);
-            players.Add(player2);
-            players.Add(player3);
-            */
+            Console.WriteLine(car.Speed);
+        }
 
-            players.Add(new Player("Phil"));
-            players.Add(new Player("Loz"));
-            players.Add(new Player("Nick"));
+        class Car
+        {
+            public int speed;
 
-            foreach (Player player in players)
+            public Car(int speed)
             {
-                Console.WriteLine(player);
+                Speed = speed;
+            }
+
+            public int Speed
+            {
+                get {  return speed; }
+
+                set
+                {
+                    if (value > 500)
+                    {
+                        speed = 500;
+                    }
+
+                    else
+                    {
+                        speed = value;
+                    }
+                }   
             }
         }
     }
-
-    class Player
-    {
-        public String username;
-        public Player(String username)
-        {
-            this.username = username;
-        }
-
-        public override string ToString()
-        {
-            return username;
-        }
-    }
-
 }
