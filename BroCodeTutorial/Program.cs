@@ -7,47 +7,33 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 46 - get and set (encapsulation) = add security to fields by encapsulation
+            // Lesson 47 - auto implemented properties = shortcut when no additional logic is required in the property
+            // you do not have to define a field for a property.
+            // you only have write get; and /or set; insdie the property
 
-            // They are accessors found within properties
-            // Properties = combine aspects of both fields and methods (share name with a field (just as constructor does with a class))
-            // Get accessor = used to return the propertyu value
-            // Set accessor = used to assign a new value
-            // Value keyword = defines the value being assigned by the set (parameter)
+            Car car = new Car("Focus");
 
-            Car car = new Car(400);
-
-            car.Speed = 1000000000;
-
-            Console.WriteLine(car.Speed);
+            Console.WriteLine(car.Model);
         }
     }
 
     class Car
     {
-        public int speed;
+        public String Model { get; set; }
+        
+        /*
+        String model;
 
-        public Car(int speed)
+        public String Model
         {
-            Speed = speed;
+            get { return model; }
+            set { model = value; }
+        }
+        */
+
+        public Car(string model)        {
+            this.Model = model;
         }
 
-        public int Speed
-        {
-            get {  return speed; }
-
-            set
-            {
-                if (value > 500)
-                {
-                    speed = 500;
-                }
-
-                else
-                {
-                    speed = value;
-                }
-            }   
-        }
     }
 }
