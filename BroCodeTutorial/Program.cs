@@ -7,8 +7,9 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 46 - getters and setters = add security to fields by encapsulation
-            // They are accessorts found within properties
+            // Lesson 46 - get and set (encapsulation) = add security to fields by encapsulation
+
+            // They are accessors found within properties
             // Properties = combine aspects of both fields and methods (share name with a field (just as constructor does with a class))
             // Get accessor = used to return the propertyu value
             // Set accessor = used to assign a new value
@@ -20,33 +21,33 @@ namespace BroCodeTutorial
 
             Console.WriteLine(car.Speed);
         }
+    }
 
-        class Car
+    class Car
+    {
+        public int speed;
+
+        public Car(int speed)
         {
-            public int speed;
+            Speed = speed;
+        }
 
-            public Car(int speed)
+        public int Speed
+        {
+            get {  return speed; }
+
+            set
             {
-                Speed = speed;
-            }
-
-            public int Speed
-            {
-                get {  return speed; }
-
-                set
+                if (value > 500)
                 {
-                    if (value > 500)
-                    {
-                        speed = 500;
-                    }
+                    speed = 500;
+                }
 
-                    else
-                    {
-                        speed = value;
-                    }
-                }   
-            }
+                else
+                {
+                    speed = value;
+                }
+            }   
         }
     }
 }
