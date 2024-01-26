@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace BroCodeTutorial
 {
@@ -7,27 +8,43 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 49 - generics = not specific to a particular data type
-            // add <T> to: classes, methods, fields, etc.
-            // allows for code reusibilty for different data types
+            // Lesson 50 -  multithreading
+            // thread = an execution path of a program
+            // we cam use muliple threads to perform different tasks at the same time.
+            // Current thread running is "main" thread
+            // using System.Threading;
+            
+            Thread mainThread = Thread.CurrentThread;
+            mainThread.Name = "Main Thread";
+            Console.WriteLine(mainThread.Name);
 
-            int[] intArray = { 1, 2, 3 };
-            double[] doubleArray = { 1.5, 2.5, 3.5 };
-            String[] stringArray = { "1", "2", "3"};
+            Thread thread1 = new Thread(CountUp);
+            Thread thread2 = new Thread(CountDown);
 
-            DisplayArray(intArray);
-            DisplayArray(doubleArray);
-            DisplayArray(stringArray);
+            thread1.Start();
+            thread2.Start();
+
+            // CountUp();
+            // CountDown();
 
         }
-
-        public static void DisplayArray<T>(T[] array)
+        public static void CountUp()
         {
-            foreach(T I in array)
+            for (int i = 1; i <= 10; i++)
             {
-                Console.Write(I + ", ");               
+                Console.WriteLine("Timer #1: " + i);
+                Thread.Sleep(1000);
             }
-            Console.WriteLine();
+            Console.WriteLine("Timer #1 is COMPLETE");
+        }
+        public static void CountDown()
+        {
+            for (int i = 10; i >= 1; i--)
+            {
+                Console.WriteLine("Timer #2: " + i);
+                Thread.Sleep(1000);
+            }
+            Console.WriteLine("Timer #2 is COMPLETE");
         }
     }
 }
