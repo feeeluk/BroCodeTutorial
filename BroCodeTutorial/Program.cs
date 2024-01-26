@@ -7,56 +7,27 @@ namespace BroCodeTutorial
     {
         static void Main(string[] args)
         {
-            // Lesson 48 - enums = special 'class' that contains a set of named integer constants.
-            // Use enums when you have values that you know will not change.
-            // To get the integer value from an item, you must explicitly convert to an int.
-            // name = integer
+            // Lesson 49 - generics = not specific to a particular data type
+            // add <T> to: classes, methods, fields, etc.
+            // allows for code reusibilty for different data types
 
-            Console.WriteLine(Planets.Mercury);
-            Console.WriteLine((int)Planets.Earth);
+            int[] intArray = { 1, 2, 3 };
+            double[] doubleArray = { 1.5, 2.5, 3.5 };
+            String[] stringArray = { "1", "2", "3"};
 
-            Console.WriteLine("#######################");
-
-            String name = PlanetsRadius.Earth.ToString();
-            int radius = (int)PlanetsRadius.Earth;
-            double volume = Volume(PlanetsRadius.Earth);
-
-            Console.WriteLine("Planet: " + name);
-            Console.WriteLine("Radius: " + radius);
-            Console.WriteLine("Volume: " + volume);
+            DisplayArray(intArray);
+            DisplayArray(doubleArray);
+            DisplayArray(stringArray);
 
         }
 
-        public static double Volume(PlanetsRadius radius)
+        public static void DisplayArray<T>(T[] array)
         {
-            double volume = (4.0/3.0) * Math.PI * Math.Pow((int)radius,3);
-            return volume;
+            foreach(T I in array)
+            {
+                Console.Write(I + ", ");               
+            }
+            Console.WriteLine();
         }
-    }
-
-    enum Planets
-    {
-        Mercury,
-        Venus,
-        Earth,
-        Mars,
-        Juipiter,
-        Saturn,
-        Uranus,
-        Neptune,
-        Pluto
-    }
-
-    enum PlanetsRadius
-    {
-        Mercury = 2439,
-        Venus = 6051,
-        Earth = 6371,
-        Mars = 3389,
-        Juipiter = 69911,
-        Saturn = 58232,
-        Uranus = 25362,
-        Neptune = 24622,
-        Pluto = 1188
     }
 }
